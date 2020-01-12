@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
+    <p class="mb-4">Найдено {{ tours|length }} туров, от {{ min_price }} до {{ max_price }}
+        и от {{ min_nights }} ночей до {{ max_nights }} ночей</p>
+    <!-- HERO -->
+
+
+    <!-- CARDS -->
+    <div class="row mt-5">
+
+        {% for tour_id in tours %}
+        <div class="col-4">
+            <div class="card mb-3" >
+            <img src="{{ tours[tour_id].picture }}" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h5 class="card-title">{{ tours[tour_id].title }}</h5>
+             <p class="card-text">{{ tours[tour_id].description }}</p>
+                <a href="/tours/{{ tour_id }}" class="btn btn-sm btn-primary">Подробнее</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
